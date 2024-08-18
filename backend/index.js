@@ -9,8 +9,6 @@ const { z } = require("zod");
 
 // });
 
-console.log(process.env.BASE64_API_KEY);
-
 app.post("/pay", (req, res) => {
     const { amount, currency } = req.body;
 
