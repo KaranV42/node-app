@@ -20,6 +20,7 @@
 
     <script>
         async function authorizePayment(event) {
+          import currencyCode from 'currency-code';
           event.preventDefault();
           const amount = document.getElementById('amount').value;
           const currency = document.getElementById('currency').value.toUpperCase();
@@ -28,9 +29,9 @@
           errorMessage.textContent = '';
 
           const validAmount = !isNaN(amount) && amount > 0;
-          const validCurrencies = ['USD', 'INR', 'NZD', 'EUR', 'GBP', 'AUD', 'CAD'];
+          const validCurrencies = currencyCode.isValid(currency);
 
-          if (validAmount && validCurrencies.includes(currency)) {
+          if (validAmount && validCurrencies) {
               try {
                   const response = await fetch('https://my-backend-url', {
                       method: 'POST',
