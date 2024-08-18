@@ -5,15 +5,19 @@ const app = express();
 import { nanoid } from "nanoid";
 const { z } = require("zod");
 
-// const schema = z.object({
-
-// });
+const schema = z.object({
+    amount: z.number().positive(),
+    currency: z.string().refine(
+        (code) => currencyCodes.code(code) !== undefined, 
+        { message: "Invalid currency code" }
+    ),
+});
 
 app.post("/pay", (req, res) => {
     const { amount, currency } = req.body;
 
     axios
-        .get("https://sec.windcave.com/api/v1/sessions", {
+        .post("https://sec.windcave.com/api/v1/sessions", {
             headers: {
                 "Content-Type": "application/json",
                 Authorization: "Basic " + procss.env.BASE64_API_KEY,
