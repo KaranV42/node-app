@@ -19,8 +19,8 @@
     </div>
 
     <script>
+        import currencyCode from 'currency-code';
         async function authorizePayment(event) {
-          import currencyCode from 'currency-code';
           event.preventDefault();
           const amount = document.getElementById('amount').value;
           const currency = document.getElementById('currency').value.toUpperCase();
