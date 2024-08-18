@@ -28,7 +28,7 @@
           errorMessage.textContent = '';
 
           const validAmount = !isNaN(amount) && amount > 0;
-          const validCurrencies = ['USD', 'EUR', 'GBP', 'AUD', 'CAD'];
+          const validCurrencies = ['USD', 'INR', 'NZD', 'EUR', 'GBP', 'AUD', 'CAD'];
 
           if (validAmount && validCurrencies.includes(currency)) {
               try {
