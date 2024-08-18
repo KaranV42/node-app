@@ -1,18 +1,46 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
+<head>
+    <meta charset="UTF-8">
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Vite App</title>
-  </head>
-  <body>
-    <div id="app">
-      <button onclick="window.location.href='https://www.youtube.com/watch?v=CYXJYQZ3FX0';">
-            Test
-        </button>
+</head>
+<body>
+    <div class="centered">
+        <h2>Payment Authorization</h2>
+        <form id="paymentForm" onsubmit="return authorizePayment(event);">
+            <input type="text" id="amount" name="amount" placeholder="Enter Amount" required>
+            <input type="text" id="currency" name="currency" placeholder="Enter Currency (e.g., USD)" required>
+            <button type="submit">Authorize Payment</button>
+        </form>
+        <p id="errorMessage"></p>
     </div>
-    <script type="module" src="/main.js"></script>
-  </body>
+
+    <script>
+        const form = document.getElementById('paymentForm');
+        form.addEventListener('submit', authorizePayment);
+        
+        function authorizePayment(event) {
+            event.preventDefault();
+            const amount = document.getElementById('amount').value;
+            const currency = document.getElementById('currency').value.toUpperCase();
+            const errorMessage = document.getElementById('errorMessage');
+
+            errorMessage.textContent = '';
+
+            const validAmount = !isNaN(amount) && amount > 0;
+            const validCurrencies = ['USD', 'EUR', 'GBP', 'AUD', 'CAD'];
+
+            if (validAmount && validCurrencies.includes(currency)) {
+                window.location.href ='https://www.youtube.com/watch?v=CYXJYQZ3FX0';
+                return true;
+            } else {
+                errorMessage.textContent = 'Invalid amount or currency. Please check your input.';
+                return false;
+            }
+        }
+    </script>
+</body>
 </html>
