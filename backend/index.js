@@ -20,7 +20,7 @@ app.post("/pay", (req, res) => {
         .post("https://sec.windcave.com/api/v1/sessions", {
             headers: {
                 "Content-Type": "application/json",
-                Authorization: "Basic " + procss.env.BASE64_API_KEY,
+                "Authorization": "Basic " + procss.env.BASE64_API_KEY,
             },
             data: {
                 type: "purchase",
