@@ -6,7 +6,7 @@ const CustomerDetails = async (customerData) => {
 
     const headers = {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
+        "Authorization": "Basic " + procss.env.BASE64_API_KEY,
     };
 
     try {
