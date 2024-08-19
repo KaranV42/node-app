@@ -1,8 +1,5 @@
 const CustomerDetails = async (customerData) => {
     const url = ""; 
-    const username = "yourUsername";
-    const password = "yourPassword";
-    const token = btoa(`${username}:${password}`);
 
     const headers = {
         "Content-Type": "application/json",
