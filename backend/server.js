@@ -39,7 +39,7 @@ app.post('/retrieve-appointment', async (req, res) => {
             };
 
             const amount = appointment.price || '0.00';
-            const currency = appointment.currency || 'USD'; // Example currency, adjust as needed
+            const currency = appointment.currency || 'USD'; 
 
             res.json({ amount, currency });
         } catch (error) {
